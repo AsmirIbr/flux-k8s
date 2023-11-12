@@ -30,7 +30,6 @@ FluxCD automates the deployment of applications to Kubernetes. Install FluxCD an
 
     curl -s https://fluxcd.io/install.sh | sudo bash
     flux bootstrap github --owner=<GitHub Username> --repository=<Repository Name> --branch=main --path=./clusters/my-cluster --personal --components-extra=image-reflector-controller,image-automation-controller
-    flux create kustomization wordpress --source=flux-system --path="./wordpress/flux" --prune=true --interval=10m
 
 ## 5. WordPress Deployment with Helm
 A Helm Chart for WordPress is already prepared with the following structure:
@@ -63,6 +62,10 @@ Add the following files to the `wordpress/flux` folder for FluxCD to manage the 
 - `wordpress-imagerepo.yaml`
 - `wordpress-imageupdateautomation.yaml`
 
+## 8. Finally, add the WordPress kustomization to Flux:
+
+    flux create kustomization wordpress --source=flux-system --path="./wordpress/flux" --prune=true --interval=10m
+    
 ---
 
 Replace placeholders like `<GitHub Username>` and `<Repository Name>` with your actual GitHub username and repository name. Adjust any paths or configurations as needed for your environment.

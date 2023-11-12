@@ -21,7 +21,7 @@ spec:
   interval: 1m
   chart:
     spec:
-      chart: ./cluster/wordpress
+      chart: ./wordpress
       sourceRef:
         kind: GitRepository
         name: wordpress

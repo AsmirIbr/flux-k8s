@@ -1,0 +1,28 @@
+# Default values for WordPress and MySQL combo chart.
+
+# WordPress configuration
+wordpress:
+  replicaCount: 1
+  image:
+    repository: public.ecr.aws/r9t8d2i8/asmir
+    tag: 1.0.0
+    pullPolicy: Always
+  dbUser: root
+  dbName: wordpress
+  dbHost: wordpress-mysql
+  persistence:
+    enabled: true
+    size: 10Gi
+
+# MySQL configuration
+mysql:
+  replicaCount: 1
+  image:
+    repository: mysql
+    tag: 5.7
+    pullPolicy: IfNotPresent
+  user: wordpressuser
+  database: wordpress
+  persistence:
+    enabled: true
+    size: 8Gi

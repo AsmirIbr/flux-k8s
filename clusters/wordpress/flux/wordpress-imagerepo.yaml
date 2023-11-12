@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: wordpress
+  namespace: wordpress
+spec:
+  image: public.ecr.aws/r9t8d2i8/asmir
+  interval: 1m

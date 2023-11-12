@@ -1,0 +1,22 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: wordpress
+  namespace: wordpress
+spec:
+  sourceRef:
+    kind: GitRepository
+    name: wordpress  # Reference to your Git repository
+  git:
+    checkout:
+      ref:
+        branch: main  # Branch of your Git repository
+    commit:
+      author:
+        name: fluxcdbot
+        email: fluxcdbot@example.com
+      messageTemplate: 'update image to {{range .Updated.Images}}{{.}}{{end}}'
+  update:
+    path: ./wordpress/flux         # Path to the directory containing these YAML files
+    strategy: Setters
+  interval: 1m

@@ -64,7 +64,8 @@ Add the following files to the `wordpress/flux` folder for FluxCD to manage the 
 
 ## 8. Finally, add the WordPress kustomization to Flux:
 
-    flux create kustomization wordpress --source=flux-system --path="./wordpress/flux" --prune=true --interval=10m
+    flux create source git wordpress --url=<Repository Name> --branch=main --interval=10m
+    flux create kustomization wordpress --source=flux-system --path="./clusters/wordpress/flux" --prune=true --interval=10m
     
 ---
 
